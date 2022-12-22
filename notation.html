@@ -79,6 +79,10 @@
                     <p class="ps-2"><a href="#intersection-of-classes">3.2. Intersection of Classes</a></p>
                     <p class="ps-2"><a href="#union-of-classes">3.3. Union of Classes</a></p>
                     <!--<p class="ps-2"><a href="#complement-of-classes">3.4. Complement of Classes</a></p>-->
+                    <p><a href="#anonymous-classes-domain-range-properties">4. Anonymous classes as domain and range in properties</a></p>
+                    <p class="ps-2"><a href="#anonymous-classes-domain-object-properties">4.1. Object Properties Domain</a></p>
+                    <p class="ps-2"><a href="#anonymous-classes-range-object-properties">4.2. Object Properties Range</a></p>
+                    <p class="ps-2"><a href="#anonymous-classes-domain-datatype-properties">4.3. Datatype Properties Domain</a></p>
                 </div>
 
                 <div id="toc-domain-experts" style="display: none;">
@@ -3106,8 +3110,8 @@
                             </tr>
                         </tbody>
                     </table>
-
-                    <h5 id="concatenation-class-restrictions" class="pt-3">3. Combining Class Descriptions</h5>
+                    
+                    <h4 id="concatenation-class-restrictions" class="pt-3">3. Combining Class Descriptions</h4>
 
                     <p class="pt-3">An anonymous Class acts semantically as a Class. Therefore, inside a Class Description
                         could be another Class Description. In this section the notation used in order to concatenate
@@ -3835,9 +3839,607 @@
 
                         </tbody>
 
+                    </table>-->
+
+                    <h4 id="anonymous-classes-domain-range-properties" class="pt-3">4. Anonymous classes as domain and range in properties</h4>
+
+                    <h5 id="anonymous-classes-domain-object-properties" class="pt-3">4.1. Object Properties Domain</h5>
+
+                    <p class="pt-3">Enumeration as domain of an object property.</p>
+
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 55%;">Notation Example</th>
+                                <th scope="col" style="width: 45%;">OWL Code</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="main-tag">Preferred</p>
+                                    <p> <br> </p>
+                                    <img src="images/enumeration_domain_object_property_1.svg" alt="enumeration as domain of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:domain [ a owl:Class ;<br>
+                                    owl:oneOf ( ns:Individual1 ns:Individual2 ns:Individual3 ) ] .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br>
+                                    <br>
+                                    ns:Individual1 a owl:NamedIndividual .<br>
+                                    <br>
+                                    ns:Individual2 a owl:NamedIndividual .<br>
+                                    <br>
+                                    ns:Individual3 a owl:NamedIndividual .</code></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="alt-tag">Alternative</p>
+                                    <p> <br> </p>
+                                    <img src="images/enumeration_domain_object_property_2.svg" alt="enumeration as domain of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:domain [ a owl:Class ;<br>
+                                    owl:oneOf ( ns:Individual1 ns:Individual2 ns:Individual3 ) ] .<br>
+                                    <br>
+                                    ns:Individual1 a owl:NamedIndividual .<br>
+                                    <br>
+                                    ns:Individual2 a owl:NamedIndividual .<br>
+                                    <br>
+                                    ns:Individual3 a owl:NamedIndividual .</code></td>
+                            </tr>
+                        </tbody>
                     </table>
 
-                </div>-->
+                    <p class="pt-3">Restriction as domain of an object property.</p>
+
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 55%;">Notation Example</th>
+                                <th scope="col" style="width: 45%;">OWL Code</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="main-tag">Preferred</p>
+                                    <p> <br> </p>
+                                    <img src="images/restriction_domain_object_property_1.svg" alt="restriction as domain of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:domain [ a owl:Restriction ;<br>
+                                    owl:allValuesFrom ns:Class1 ;<br>
+                                    owl:onProperty ns:objectProperty2 ] .<br>
+                                    <br>
+                                    ns:objectProperty2 a owl:ObjectProperty ;<br>
+                                    rdfs:range ns:Class1 .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br>
+                                    <br>
+                                    ns:Class2 a owl:Class .</code></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="alt-tag">Alternative</p>
+                                    <p> <br> </p>
+                                    <img src="images/restriction_domain_object_property_2.svg" alt="restriction as domain of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:domain [ a owl:Restriction ;<br>
+                                    owl:allValuesFrom ns:Class1 ;<br>
+                                    owl:onProperty ns:objectProperty2 ] .<br>
+                                    <br>
+                                    ns:objectProperty2 a owl:ObjectProperty ;<br>
+                                    rdfs:range ns:Class1 .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="pt-3">Intersection as domain of an object property.</p>
+
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 55%;">Notation Example</th>
+                                <th scope="col" style="width: 45%;">OWL Code</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="main-tag">Preferred</p>
+                                    <p> <br> </p>
+                                    <img src="images/intersection_domain_object_property_1.svg" alt="intersection as domain of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:domain [ a owl:Class ;<br>
+                                    owl:intersectionOf ( ns:Class1 ns:Class2 ) ] .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br>
+                                    <br>
+                                    ns:Class2 a owl:Class .<br>
+                                    <br>
+                                    ns:Class3 a owl:Class .</code></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="alt-tag">Alternative</p>
+                                    <p> <br> </p>
+                                    <img src="images/intersection_domain_object_property_2.svg" alt="intersection as domain of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:domain [ a owl:Class ;<br>
+                                    owl:intersectionOf ( ns:Class1 ns:Class2 ) ] .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br>
+                                    <br>
+                                    ns:Class2 a owl:Class .</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="pt-3">Union as domain of an object property.</p>
+
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 55%;">Notation Example</th>
+                                <th scope="col" style="width: 45%;">OWL Code</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="main-tag">Preferred</p>
+                                    <p> <br> </p>
+                                    <img src="images/union_domain_object_property_1.svg" alt="union as domain of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:domain [ a owl:Class ;<br>
+                                    owl:unionOf ( ns:Class1 ns:Class2 ) ] .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br>
+                                    <br>
+                                    ns:Class2 a owl:Class .<br>
+                                    <br>
+                                    ns:Class3 a owl:Class .</code></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="alt-tag">Alternative</p>
+                                    <p> <br> </p>
+                                    <img src="images/union_domain_object_property_2.svg" alt="union as domain of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:domain [ a owl:Class ;<br>
+                                    owl:unionOf ( ns:Class1 ns:Class2 ) ] .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br>
+                                    <br>
+                                    ns:Class2 a owl:Class .</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="pt-3">Complement as domain of an object property.</p>
+
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 55%;">Notation Example</th>
+                                <th scope="col" style="width: 45%;">OWL Code</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="main-tag">Preferred</p>
+                                    <p> <br> </p>
+                                    <img src="images/complement_domain_object_property_1.svg" alt="complement as domain of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:domain [ a owl:Class ;<br>
+                                    owl:complementOf ns:Class1 ] .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br>
+                                    <br>
+                                    ns:Class2 a owl:Class .<br></code></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="alt-tag">Alternative</p>
+                                    <p> <br> </p>
+                                    <img src="images/complement_domain_object_property_2.svg" alt="complement as domain of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:domain [ a owl:Class ;<br>
+                                    owl:complementOf ns:Class1 ] .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br></code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h5 id="anonymous-classes-range-object-properties" class="pt-3">4.2. Object Properties Range</h5>
+
+                    <p class="pt-3">Enumeration as range of an object property.</p>
+
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 55%;">Notation Example</th>
+                                <th scope="col" style="width: 45%;">OWL Code</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="main-tag">Preferred</p>
+                                    <p> <br> </p>
+                                    <img src="images/enumeration_range_object_property_1.svg" alt="enumeration as range of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:range [ a owl:Class ;<br>
+                                    owl:oneOf ( ns:Individual1 ns:Individual2 ns:Individual3 ) ] .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br>
+                                    <br>
+                                    ns:Individual1 a owl:NamedIndividual .<br>
+                                    <br>
+                                    ns:Individual2 a owl:NamedIndividual .<br>
+                                    <br>
+                                    ns:Individual3 a owl:NamedIndividual .</code></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="alt-tag">Alternative</p>
+                                    <p> <br> </p>
+                                    <img src="images/enumeration_range_object_property_2.svg" alt="enumeration as range of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:range [ a owl:Class ;<br>
+                                    owl:oneOf ( ns:Individual1 ns:Individual2 ns:Individual3 ) ] .<br>
+                                    <br>
+                                    ns:Individual1 a owl:NamedIndividual .<br>
+                                    <br>
+                                    ns:Individual2 a owl:NamedIndividual .<br>
+                                    <br>
+                                    ns:Individual3 a owl:NamedIndividual .</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="pt-3">Restriction as range of an object property.</p>
+
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 55%;">Notation Example</th>
+                                <th scope="col" style="width: 45%;">OWL Code</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="main-tag">Preferred</p>
+                                    <p> <br> </p>
+                                    <img src="images/restriction_range_object_property_1.svg" alt="restriction as range of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:range [ a owl:Restriction ;<br>
+                                    owl:allValuesFrom ns:Class1 ;<br>
+                                    owl:onProperty ns:objectProperty2 ] .<br>
+                                    <br>
+                                    ns:objectProperty2 a owl:ObjectProperty ;<br>
+                                    rdfs:range ns:Class1 .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br>
+                                    <br>
+                                    ns:Class2 a owl:Class .</code></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="alt-tag">Alternative</p>
+                                    <p> <br> </p>
+                                    <img src="images/restriction_range_object_property_2.svg" alt="restriction as range of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:range [ a owl:Restriction ;<br>
+                                    owl:allValuesFrom ns:Class1 ;<br>
+                                    owl:onProperty ns:objectProperty2 ] .<br>
+                                    <br>
+                                    ns:objectProperty2 a owl:ObjectProperty ;<br>
+                                    rdfs:range ns:Class1 .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="pt-3">Intersection as range of an object property.</p>
+
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 55%;">Notation Example</th>
+                                <th scope="col" style="width: 45%;">OWL Code</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="main-tag">Preferred</p>
+                                    <p> <br> </p>
+                                    <img src="images/intersection_range_object_property_1.svg" alt="intersection as range of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:range [ a owl:Class ;<br>
+                                    owl:intersectionOf ( ns:Class1 ns:Class2 ) ] .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br>
+                                    <br>
+                                    ns:Class2 a owl:Class .<br>
+                                    <br>
+                                    ns:Class3 a owl:Class .</code></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="alt-tag">Alternative</p>
+                                    <p> <br> </p>
+                                    <img src="images/intersection_range_object_property_2.svg" alt="intersection as range of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:range [ a owl:Class ;<br>
+                                    owl:intersectionOf ( ns:Class1 ns:Class2 ) ] .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br>
+                                    <br>
+                                    ns:Class2 a owl:Class .</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="pt-3">Union as range of an object property.</p>
+
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 55%;">Notation Example</th>
+                                <th scope="col" style="width: 45%;">OWL Code</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="main-tag">Preferred</p>
+                                    <p> <br> </p>
+                                    <img src="images/union_range_object_property_1.svg" alt="union as range of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:range [ a owl:Class ;<br>
+                                    owl:unionOf ( ns:Class1 ns:Class2 ) ] .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br>
+                                    <br>
+                                    ns:Class2 a owl:Class .<br>
+                                    <br>
+                                    ns:Class3 a owl:Class .</code></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="alt-tag">Alternative</p>
+                                    <p> <br> </p>
+                                    <img src="images/union_range_object_property_2.svg" alt="union as range of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:range [ a owl:Class ;<br>
+                                    owl:unionOf ( ns:Class1 ns:Class2 ) ] .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br>
+                                    <br>
+                                    ns:Class2 a owl:Class .</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="pt-3">Complement as range of an object property.</p>
+
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 55%;">Notation Example</th>
+                                <th scope="col" style="width: 45%;">OWL Code</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="main-tag">Preferred</p>
+                                    <p> <br> </p>
+                                    <img src="images/complement_range_object_property_1.svg" alt="complement as range of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:range [ a owl:Class ;<br>
+                                    owl:complementOf ns:Class1 ] .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br>
+                                    <br>
+                                    ns:Class2 a owl:Class .<br></code></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" scope="row">
+                                    <p class="alt-tag">Alternative</p>
+                                    <p> <br> </p>
+                                    <img src="images/complement_range_object_property_2.svg" alt="complement as range of an object property">
+                                </td>
+                                <td rowspan="1"><code>ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:range [ a owl:Class ;<br>
+                                    owl:complementOf ns:Class1 ] .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br></code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h5 id="anonymous-classes-domain-datatype-properties" class="pt-3">4.3. Datatype Properties Domain</h5>
+
+                    <p class="pt-3">Enumeration as domain of an datatype property.</p>
+
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 55%;">Notation Example</th>
+                                <th scope="col" style="width: 45%;">OWL Code</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-center row-height" scope="row">
+                                    <img src="images/enumeration_domain_datatype_property.svg" alt="enumeration as domain of an datatype property">
+                                </td>
+                                <td><code>ns:datatypeProperty a owl:DatatypeProperty ;<br>
+                                    rdfs:domain [ a owl:Class ;<br>
+                                    owl:oneOf ( ns:Individual1 ns:Individual2 ns:Individual3 ) ] .<br>
+                                    <br>
+                                    ns:Individual1 a owl:NamedIndividual .<br>
+                                    <br>
+                                    ns:Individual2 a owl:NamedIndividual .<br>
+                                    <br>
+                                    ns:Individual3 a owl:NamedIndividual .</code></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                    <p class="pt-3">Restriction as domain of an datatype property.</p>
+
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 55%;">Notation Example</th>
+                                <th scope="col" style="width: 45%;">OWL Code</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-center row-height" scope="row">
+                                    <img src="images/restriction_domain_datatype_property.svg" alt="restriction as domain of an datatype property">
+                                </td>
+                                <td><code>ns:datatypeProperty a owl:DatatypeProperty ;<br>
+                                    rdfs:domain [ a owl:Restriction ;<br>
+                                    owl:allValuesFrom ns:Class1 ;<br>
+                                    owl:onProperty ns:objectProperty ] .<br>
+                                    <br>
+                                    ns:objectProperty a owl:ObjectProperty ;<br>
+                                    rdfs:range ns:Class1 .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .</code></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                    <p class="pt-3">Intersection as domain of an datatype property.</p>
+
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 55%;">Notation Example</th>
+                                <th scope="col" style="width: 45%;">OWL Code</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-center row-height" scope="row">
+                                    <img src="images/intersection_domain_datatype_property.svg" alt="intersection as domain of an datatype property">
+                                </td>
+                                <td><code>ns:datatypeProperty a owl:DatatypeProperty ;<br>
+                                    rdfs:domain [ a owl:Restriction ;<br>
+                                    owl:intersectionOf ( ns:Class1 ns:Class2 ) ] .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br>
+                                    <br>
+                                    ns:Class2 a owl:Class .</code></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                    <p class="pt-3">Union as domain of an datatype property.</p>
+
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 55%;">Notation Example</th>
+                                <th scope="col" style="width: 45%;">OWL Code</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-center row-height" scope="row">
+                                    <img src="images/union_domain_datatype_property.svg" alt="union as domain of an datatype property">
+                                </td>
+                                <td><code>ns:datatypeProperty a owl:DatatypeProperty ;<br>
+                                    rdfs:domain [ a owl:Restriction ;<br>
+                                    owl:unionOf ( ns:Class1 ns:Class2 ) ] .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .<br>
+                                    <br>
+                                    ns:Class2 a owl:Class .</code></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                    <p class="pt-3">Complement as domain of a datatype property.</p>
+
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 55%;">Notation Example</th>
+                                <th scope="col" style="width: 45%;">OWL Code</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-center row-height" scope="row">
+                                    <img src="images/complement_domain_datatype_property.svg" alt="complement as domain of an datatype property">
+                                </td>
+                                <td><code>ns:datatypeProperty a owl:DatatypeProperty ;<br>
+                                    rdfs:domain [ a owl:Restriction ;<br>
+                                    owl:complementOf ns:Class1 ] .<br>
+                                    <br>
+                                    ns:Class1 a owl:Class .</code></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
 
             </section>
 
